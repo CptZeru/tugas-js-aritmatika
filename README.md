@@ -1,0 +1,1 @@
+<h1>Tugas JS Aritmatika Binar x BCA SYNRGY</h1>
