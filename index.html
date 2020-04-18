@@ -11,7 +11,7 @@
             }
             .sidenav {
                 height: 100%;
-                width:250px;
+                width: 80px;
                 position: fixed;
                 z-index: 1;
                 top:0;
@@ -19,12 +19,15 @@
                 background-color: #5D5650;
                 transition: 0.5s;
                 padding-top: 60px;
-                
+                /* untuk icon dan tulisan sejajar tidak 2 baris*/
+                white-space: nowrap;
             }
-            .sidenav .title{
+            .sidenav #judul{
                 text-align: center;
                 font-size: 25px;
                 color: #FBFBFB;
+                transition: 0.1s;
+                visibility: hidden;
             }
             .sidenav a{
                 padding: 50px 8px 8px 32px;
@@ -41,19 +44,28 @@
                 display: inline-block;
                 width: 30px;
             }
+            #main{
+                transition: margin-left .5s;
+                margin-left: 80px;
+                padding: 1px 16px;
+            }
         </style>
     </head>
     <body>
         <div class="sidenav" id="inisidenav" onmouseover="hitSidenav()" onmouseout="hitSidenav()">
-            <p class="title">Kalkulator Operasi Aritmatika <br> dan Hasil Terbilang</p>
-            <a class="fa fa-plus" href="#"><span class="tab-1"></span>Penjumlahan</a>
-            <a class="fa fa-minus" href=""><span class="tab-1"></span>Pengurangan</a>
-            <a class="fa fa-times" href=""><span class="tab-1"></span> Pengkalian</a>
-            <a class="fa fa-divide" href=""><span class="tab-1"></span>Pembagian</a>
+            <p id="judul">Operasi Aritmatika <br> dan Hasil Terbilang</p>
+            <a class="fa fa-plus" href="#penjumlahan"><span class="tab-1"></span>Penjumlahan</a>
+            <a class="fa fa-minus" href="#pengurangan"><span class="tab-1"></span>Pengurangan</a>
+            <a class="fa fa-times" href="#pengkalian"><span class="tab-1"></span> Pengkalian</a>
+            <a class="fa fa-divide" href="#pembagian"><span class="tab-1"></span>Pembagian</a>
         </div>
 
         <div class="content" id="main">
-
+            <section id="penjumlahan"></section>
+            <section id="pengurangan"></section>
+            <section id="pengkalian"></section>
+            <section id="pembagian"></section>
+            <p>hello</p>
         </div>
         <script>
             $collapse = true;
@@ -62,11 +74,13 @@
                     console.log("opening sidenav");
                     document.getElementById("inisidenav").style.width = "250px";
                     document.getElementById("main").style.marginLeft = "250px";
+                    document.getElementById("judul").style.visibility = "visible";
                     $collapse = false;
                 }else{
                     console.log("closing sidenav");
-                    document.getElementById("inisidenav").style.width = "100px";
-                    document.getElementById("main").style.marginLeft = "100px";
+                    document.getElementById("inisidenav").style.width = "80px";
+                    document.getElementById("main").style.marginLeft = "80px";
+                    document.getElementById("judul").style.visibility = "hidden";
                     $collapse = true;
                 }
             }
