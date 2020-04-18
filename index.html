@@ -13,10 +13,13 @@
                 height: 100%;
                 width:250px;
                 position: fixed;
+                z-index: 1;
                 top:0;
                 left: 0;
                 background-color: #5D5650;
+                transition: 0.5s;
                 padding-top: 60px;
+                
             }
             .sidenav .title{
                 text-align: center;
@@ -34,19 +37,39 @@
             .sidenav a:hover{
                 opacity: 1;
             }
+            .tab-1{
+                display: inline-block;
+                width: 30px;
+            }
         </style>
     </head>
     <body>
-        <div class="sidenav">
+        <div class="sidenav" id="inisidenav" onmouseover="hitSidenav()" onmouseout="hitSidenav()">
             <p class="title">Kalkulator Operasi Aritmatika <br> dan Hasil Terbilang</p>
-            <a class="fa fa-plus" href="#"> Penjumlahan</a>
-            <a class="fa fa-minus" href=""> Pengurangan</a>
-            <a class="fa fa-times" href=""> Pengkalian</a>
-            <a class="fa fa-divide" href="">  Pembagian</a>
+            <a class="fa fa-plus" href="#"><span class="tab-1"></span>Penjumlahan</a>
+            <a class="fa fa-minus" href=""><span class="tab-1"></span>Pengurangan</a>
+            <a class="fa fa-times" href=""><span class="tab-1"></span> Pengkalian</a>
+            <a class="fa fa-divide" href=""><span class="tab-1"></span>Pembagian</a>
         </div>
 
-        <div class="main">
+        <div class="content" id="main">
 
         </div>
+        <script>
+            $collapse = true;
+            function hitSidenav(){
+                if($collapse){
+                    console.log("opening sidenav");
+                    document.getElementById("inisidenav").style.width = "250px";
+                    document.getElementById("main").style.marginLeft = "250px";
+                    $collapse = false;
+                }else{
+                    console.log("closing sidenav");
+                    document.getElementById("inisidenav").style.width = "100px";
+                    document.getElementById("main").style.marginLeft = "100px";
+                    $collapse = true;
+                }
+            }
+        </script>
     </body>
 </html>
