@@ -89,6 +89,7 @@
                 text-align: center;
             }
             #main{
+                padding: 0;
                 transition: margin-left .5s;
                 margin-left: 80px;
                 /* padding: 1px 16px; */
@@ -99,27 +100,6 @@
             .text-center{
                 text-align: center;
             }
-            .row::after {
-                content: "";
-                clear: both;
-                display: table;
-            }
-            [class*="col-"] {
-                float: left;
-                /* padding: 15px; */
-            }
-            .col-1 {width: 8.33%;}
-            .col-2 {width: 16.66%;}
-            .col-3 {width: 25%;}
-            .col-4 {width: 33.33%;}
-            .col-5 {width: 41.66%;}
-            .col-6 {width: 50%;}
-            .col-7 {width: 58.33%;}
-            .col-8 {width: 66.66%;}
-            .col-9 {width: 75%;}
-            .col-10 {width: 83.33%;}
-            .col-11 {width: 91.66%;}
-            .col-12 {width: 100%;}
         </style>
     </head>
     <body>
@@ -132,10 +112,10 @@
         </div>
 
         <div class="content" id="main">
-            <div class="row">
-                <div class="col-12">
-                    <section id="penjumlahan">
-                        <div class="center">
+            <section id="penjumlahan">
+                <div class="outer">
+                    <div class="middle">
+                        <div class="inner" align="center">
                             <h2 class="text-center">PENJUMLAHAN</h2>
                             <br>
                             <form action="">
@@ -146,22 +126,22 @@
                                 <br><br> <p class="text-center">TERBILANG</p>
                             </form>
                         </div>
-                    </section>
-                    <section id="pengurangan">
-                        <div class="center">
-                            <h2 class="text-center">PENJUMLAHAN</h2>
-                            <br>
-                            <form action="">
-                                <input class="angka-1" type="number"> <span class="tab-half"></span>+<span class="tab-half"></span>
-                                <input class="angka-2" type="number"> <span class="tab-half"></span> = <span class="tab-half"></span>
-                                <input class="jawaban" type="number"> <span class="tab-half"></span>
-                                <input class="btn" type="submit" value="Submit">
-                                <br><br> <p class="text-center">TERBILANG</p>
-                            </form>
-                        </div>
-                    </section>
+                    </div>
                 </div>
-            </div>
+            </section>
+            <section id="pengurangan">
+                <div class="" align="center">
+                    <h2 class="text-center">PENGURANGAN</h2>
+                    <br>
+                    <form action="">
+                        <input class="angka-1" type="number"> <span class="tab-half"></span>+<span class="tab-half"></span>
+                        <input class="angka-2" type="number"> <span class="tab-half"></span> = <span class="tab-half"></span>
+                        <input class="jawaban" type="number"> <span class="tab-half"></span>
+                        <input class="btn" type="submit" value="Submit">
+                        <br><br> <p class="text-center">TERBILANG</p>
+                    </form>
+                </div>
+            </section>
             <section id="pengkalian"></section>
             <section id="pembagian"></section>
             <p>hello</p>
