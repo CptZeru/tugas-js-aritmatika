@@ -12,38 +12,31 @@
             body{
                 font-family: Muli, sans-serif;
                 height:100%;
+                background-color: #FBFBFB;
             }
             section{
                 height: 100vh;
+                color:#5D5650;
+            }
+            section p{
+                font-size: 30px;
             }
             .content #penjumlahan{
                 position: relative;
             }
             .center {
-                /* margin: 0;
+                margin: 0;
                 position: absolute;
                 top: 50%;
-                left: 50%;
+                left: 40%;
                 -ms-transform: translate(-50%, -50%);
-                transform: translate(-50%,-50%); */
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 100vh;
+                transform: translate(-50%,-50%);
+                /* display: flex; */
+                /* flex-wrap: wrap; */
+                /* justify-content: center; */
+                /* align-items: center; */
+                /* height: 100vh; */
             }
-            /* Testing section full height */
-            /* section:nth-child(1) {
-                background: lightblue;
-            }
-            section:nth-child(2) {
-                background: lightgreen;
-            }
-            section:nth-child(3) {
-                background: purple;
-            }
-            section:nth-child(4) {
-                background: red;
-            } */
             .sidenav {
                 height: 100%;
                 width: 80px;
@@ -77,6 +70,9 @@
             .sidenav a:hover{
                 opacity: 1;
             }
+            .btn{
+                width: 70px;
+            }
             .tab-1{
                 display: inline-block;
                 width: 30px;
@@ -98,8 +94,32 @@
                 /* padding: 1px 16px; */
             }
             input{
-                width: 150px;
+                width: 130px;
             }
+            .text-center{
+                text-align: center;
+            }
+            .row::after {
+                content: "";
+                clear: both;
+                display: table;
+            }
+            [class*="col-"] {
+                float: left;
+                /* padding: 15px; */
+            }
+            .col-1 {width: 8.33%;}
+            .col-2 {width: 16.66%;}
+            .col-3 {width: 25%;}
+            .col-4 {width: 33.33%;}
+            .col-5 {width: 41.66%;}
+            .col-6 {width: 50%;}
+            .col-7 {width: 58.33%;}
+            .col-8 {width: 66.66%;}
+            .col-9 {width: 75%;}
+            .col-10 {width: 83.33%;}
+            .col-11 {width: 91.66%;}
+            .col-12 {width: 100%;}
         </style>
     </head>
     <body>
@@ -112,14 +132,36 @@
         </div>
 
         <div class="content" id="main">
-            <section id="penjumlahan">
-                <div class="center">
-                    <input class="angka-1" type="number"> <span class="tab-half"></span>+<span class="tab-half"></span>
-                    <input class="angka-2" type="number"> <span class="tab-half"></span> = <span class="tab-half"></span>
-                    <input class="jawaban" type="number">
+            <div class="row">
+                <div class="col-12">
+                    <section id="penjumlahan">
+                        <div class="center">
+                            <h2 class="text-center">PENJUMLAHAN</h2>
+                            <br>
+                            <form action="">
+                                <input class="angka-1" type="number"> <span class="tab-half"></span>+<span class="tab-half"></span>
+                                <input class="angka-2" type="number"> <span class="tab-half"></span> = <span class="tab-half"></span>
+                                <input class="jawaban" type="number"> <span class="tab-half"></span>
+                                <input class="btn" type="submit" value="Submit">
+                                <br><br> <p class="text-center">TERBILANG</p>
+                            </form>
+                        </div>
+                    </section>
+                    <section id="pengurangan">
+                        <div class="center">
+                            <h2 class="text-center">PENJUMLAHAN</h2>
+                            <br>
+                            <form action="">
+                                <input class="angka-1" type="number"> <span class="tab-half"></span>+<span class="tab-half"></span>
+                                <input class="angka-2" type="number"> <span class="tab-half"></span> = <span class="tab-half"></span>
+                                <input class="jawaban" type="number"> <span class="tab-half"></span>
+                                <input class="btn" type="submit" value="Submit">
+                                <br><br> <p class="text-center">TERBILANG</p>
+                            </form>
+                        </div>
+                    </section>
                 </div>
-            </section>
-            <section id="pengurangan"></section>
+            </div>
             <section id="pengkalian"></section>
             <section id="pembagian"></section>
             <p>hello</p>
