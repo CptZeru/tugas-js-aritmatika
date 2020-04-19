@@ -291,9 +291,10 @@
                     document.getElementById("jumlah-jawaban").style.backgroundColor="#F5CF6A";
                 }else if(isNol($hasil)){
                     document.getElementById("jumlah-jawaban").style.backgroundColor="#B2DAD9";
-                }else{
+                }else if(!$bulat){
                     document.getElementById("jumlah-jawaban").style.backgroundColor="#FFFFFF";
                 }
+                // pembulatan($hasil,2);
                 document.getElementById("jumlah-jawaban").value=$hasil;
                 document.getElementById("jumlah-txt").innerHTML=iniTerbilang($hasil);
             }
@@ -312,6 +313,7 @@
                 }else{
                     document.getElementById("kurang-jawaban").style.backgroundColor="#FFFFFF";
                 }
+                pembulatan($hasil,2);
                 document.getElementById("kurang-jawaban").value=$hasil;
                 document.getElementById("kurang-txt").innerHTML=iniTerbilang($hasil);
             }
@@ -330,6 +332,7 @@
                 }else{
                     document.getElementById("kali-jawaban").style.backgroundColor="#FFFFFF";
                 }
+                pembulatan($hasil,2);
                 document.getElementById("kali-jawaban").value=$hasil;
                 document.getElementById("kali-txt").innerHTML=iniTerbilang($hasil);
             }
@@ -349,6 +352,7 @@
                 }else{
                     document.getElementById("bagi-jawaban").style.backgroundColor="#FFFFFF";
                 }
+                pembulatan($hasil,2);
                 document.getElementById("bagi-jawaban").value=$hasil;
                 document.getElementById("bagi-txt").innerHTML=iniTerbilang($hasil);
             }
