@@ -344,6 +344,23 @@
                 document.getElementById("bagi-jawaban").value=$hasil;
                 document.getElementById("bagi-txt").innerHTML=iniTerbilang($hasil);
             }
+            function pembulatan(nilai, digits) {
+                $minus = false;
+                if (digits === undefined) {
+                    digits = 0;
+                }
+                    if( n < 0) {
+                    minus = true;
+                    nilai = nilai * -1;
+                }
+                var pengkali = Math.pow(10, digits);
+                nilai = parseFloat((nilai * [pengkali]).toFixed(11));
+                nilai = (Math.round(nilai) / pengkali).toFixed(2);
+                if( minus ) {    
+                    nilai = (nilai * -1).toFixed(2);
+                }
+                return n;
+            }
             function isGanjil($hasil){
                 if($hasil % 2 != 0){
                     return true;
@@ -373,7 +390,7 @@
                     //trim() hapus spasi di ujung-ujung str
                     $bilang = penyebutan($hasil);
                 }else{
-                    $bilang = "minus " + penyebutan($hasil);
+                    $bilang = "Minus " + penyebutan($hasil);
                 }
                 return $bilang;
             }
