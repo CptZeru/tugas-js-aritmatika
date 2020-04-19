@@ -308,8 +308,8 @@
                 }else if(isNol($hasil)){
                     document.getElementById("kurang-jawaban").style.backgroundColor="#B2DAD9";
                 }
-                iniTerbilang($hasil);
                 document.getElementById("kurang-jawaban").value=$hasil;
+                document.getElementById("kurang-txt").innerHTML=iniTerbilang($hasil);
             }
             function kalikan(){
                 $angka1 = 0;$angka2=0;$bulat=false;
@@ -324,8 +324,8 @@
                 }else if(isNol($hasil)){
                     document.getElementById("kali-jawaban").style.backgroundColor="#B2DAD9";
                 }
-                iniTerbilang($hasil);
                 document.getElementById("kali-jawaban").value=$hasil;
+                document.getElementById("kali-txt").innerHTML=iniTerbilang($hasil);
             }
             function bagikan(){
                 $angka1 = 0;$angka2=0;$bulat = false;
@@ -341,8 +341,8 @@
                 }else if(isNol($hasil)){
                     document.getElementById("bagi-jawaban").style.backgroundColor="#B2DAD9";
                 }
-                iniTerbilang($hasil);
                 document.getElementById("bagi-jawaban").value=$hasil;
+                document.getElementById("bagi-txt").innerHTML=iniTerbilang($hasil);
             }
             function isGanjil($hasil){
                 if($hasil % 2 != 0){
@@ -366,7 +366,10 @@
                 }
             }
             function iniTerbilang($hasil){
-                if($hasil > 0){
+                if($hasil > 1000000){
+                    return "Kebanyakan BRO!";
+                }
+                else if($hasil > 0){
                     //trim() hapus spasi di ujung-ujung str
                     $bilang = penyebutan($hasil);
                 }else{
@@ -377,11 +380,12 @@
             function penyebutan($hasil){
                 // agar tidak minus saat di cek
                 $hasil = Math.abs($hasil);
+                $hasil = parseInt($hasil);
                 $satuan = ["", "Satu", "Dua", "Tiga", "Empat", "Lima", "Enam"
                 , "Tujuh", "Delapan", "Sembilan", "Sepuluh", "Sebalas"];
                 $temp = "";
                 if($hasil < 12){
-                    $temp = " " + $satuan[$hasil];
+                    $temp = " "+$satuan[$hasil];
                 }else if($hasil < 20){
                     $temp = penyebutan($hasil - 10) + " Belas";
                 }else if($hasil < 100){
