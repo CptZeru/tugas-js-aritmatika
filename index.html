@@ -6,6 +6,9 @@
         <script src="https://kit.fontawesome.com/7c02b1753c.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
         <style>
+            html{
+                scroll-behavior: smooth;
+            }
             body{
                 font-family: Muli, sans-serif;
                 height:100%;
@@ -13,6 +16,34 @@
             section{
                 height: 100vh;
             }
+            .content #penjumlahan{
+                position: relative;
+            }
+            .center {
+                /* margin: 0;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                -ms-transform: translate(-50%, -50%);
+                transform: translate(-50%,-50%); */
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+            /* Testing section full height */
+            /* section:nth-child(1) {
+                background: lightblue;
+            }
+            section:nth-child(2) {
+                background: lightgreen;
+            }
+            section:nth-child(3) {
+                background: purple;
+            }
+            section:nth-child(4) {
+                background: red;
+            } */
             .sidenav {
                 height: 100%;
                 width: 80px;
@@ -23,6 +54,8 @@
                 background-color: #5D5650;
                 transition: 0.5s;
                 padding-top: 60px;
+                /* agar text yang kelewat sidebar di hidden */
+                overflow-x: hidden;
                 /* untuk icon dan tulisan sejajar tidak 2 baris*/
                 white-space: nowrap;
             }
@@ -48,10 +81,24 @@
                 display: inline-block;
                 width: 30px;
             }
+            .tab-half{
+                display: inline-block;
+                width: 15px;
+            }
+            .tab-2{
+                display: inline-block;
+                width: 60px;
+            }
+            .terbilang{
+                text-align: center;
+            }
             #main{
                 transition: margin-left .5s;
                 margin-left: 80px;
-                padding: 1px 16px;
+                /* padding: 1px 16px; */
+            }
+            input{
+                width: 150px;
             }
         </style>
     </head>
@@ -65,7 +112,13 @@
         </div>
 
         <div class="content" id="main">
-            <section id="penjumlahan"></section>
+            <section id="penjumlahan">
+                <div class="center">
+                    <input class="angka-1" type="number"> <span class="tab-half"></span>+<span class="tab-half"></span>
+                    <input class="angka-2" type="number"> <span class="tab-half"></span> = <span class="tab-half"></span>
+                    <input class="jawaban" type="number">
+                </div>
+            </section>
             <section id="pengurangan"></section>
             <section id="pengkalian"></section>
             <section id="pembagian"></section>
