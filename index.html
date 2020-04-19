@@ -100,6 +100,23 @@
             .text-center{
                 text-align: center;
             }
+            .outer {
+                display: table;
+                /* position: absolute; */
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+            }
+
+            .middle {
+                display: table-cell;
+                vertical-align: middle;
+            }
+            .inner{
+                margin-left: auto;
+                margin-right: auto;
+            }
         </style>
     </head>
     <body>
@@ -130,21 +147,56 @@
                 </div>
             </section>
             <section id="pengurangan">
-                <div class="" align="center">
-                    <h2 class="text-center">PENGURANGAN</h2>
-                    <br>
-                    <form action="">
-                        <input class="angka-1" type="number"> <span class="tab-half"></span>+<span class="tab-half"></span>
-                        <input class="angka-2" type="number"> <span class="tab-half"></span> = <span class="tab-half"></span>
-                        <input class="jawaban" type="number"> <span class="tab-half"></span>
-                        <input class="btn" type="submit" value="Submit">
-                        <br><br> <p class="text-center">TERBILANG</p>
-                    </form>
+                <div class="outer">
+                    <div class="middle">
+                        <div class="inner" align="center">
+                            <h2 class="text-center">PENGURANGAN</h2>
+                            <br>
+                            <form action="">
+                                <input class="angka-1" type="number"> <span class="tab-half"></span>-<span class="tab-half"></span>
+                                <input class="angka-2" type="number"> <span class="tab-half"></span> = <span class="tab-half"></span>
+                                <input class="jawaban" type="number"> <span class="tab-half"></span>
+                                <input class="btn" type="submit" value="Submit">
+                                <br><br> <p class="text-center">TERBILANG</p>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </section>
-            <section id="pengkalian"></section>
-            <section id="pembagian"></section>
-            <p>hello</p>
+            <section id="pengkalian">
+                <div class="outer">
+                    <div class="middle">
+                        <div class="inner" align="center">
+                            <h2 class="text-center">PENGKALIAN</h2>
+                            <br>
+                            <form action="">
+                                <input class="angka-1" type="number"> <span class="tab-half"></span>X<span class="tab-half"></span>
+                                <input class="angka-2" type="number"> <span class="tab-half"></span> = <span class="tab-half"></span>
+                                <input class="jawaban" type="number"> <span class="tab-half"></span>
+                                <input class="btn" type="submit" value="Submit">
+                                <br><br> <p class="text-center">TERBILANG</p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="pembagian">
+                <div class="outer">
+                    <div class="middle">
+                        <div class="inner" align="center">
+                            <h2 class="text-center">PEMBAGIAN</h2>
+                            <br>
+                            <form action="">
+                                <input class="angka-1" type="number"> <span class="tab-half"></span>/<span class="tab-half"></span>
+                                <input class="angka-2" type="number"> <span class="tab-half"></span> = <span class="tab-half"></span>
+                                <input class="jawaban" type="number"> <span class="tab-half"></span>
+                                <input class="btn" type="submit" value="Submit">
+                                <br><br> <p class="text-center">TERBILANG</p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
         <script>
             $collapse = true;
