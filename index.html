@@ -103,6 +103,9 @@
                 font-size: 24px;
                 text-align: center;
             }
+            input[type="number"]:disabled{
+                background-color: #FFFFFF;
+            }
             /*hide spinner in input number*/
             input::-webkit-outer-spin-button,
             input::-webkit-inner-spin-button {
@@ -156,20 +159,21 @@
                         <div class="inner" align="center">
                             <h2 class="text-center">PENJUMLAHAN</h2>
                             <br>
-                            <form action="">
-                                <input class="angka-1" type="number">
+                            <!-- return false agar tidak menjalankan onsubmit php yang menyebabkan page reload -->
+                            <form onsubmit="return false">
+                                <input id="jumlah-1" type="number">
 
                                 <span class="tab-half"></span><span class="operator">+</span><span class="tab-half"></span>
-                                <input class="angka-2" type="number">
+                                <input id="jumlah-2" type="number">
 
                                 <span class="tab-half"></span><span class="operator">=</span><span class="tab-half"></span>
-                                <input class="jawaban" type="number" disabled>
+                                <input id="jumlah-jawaban" type="number" disabled>
 
                                 <span class="tab-half"></span>
-                                <input class="btn" type="submit" value="Submit">
+                                <input class="btn" id="jumlah-btn" type="submit" value="Submit">
                                 <br>
                                 <br>
-                                <p class="text-center" id="jawaban-penjumlahan">TERBILANG</p>
+                                <p class="text-center" id="jumlah-txt">TERBILANG</p>
                             </form>
                         </div>
                     </div>
@@ -182,19 +186,19 @@
                             <h2 class="text-center">PENGURANGAN</h2>
                             <br>
                             <form action="">
-                                <input class="angka-1" type="number">
+                                <input id="kurang-1" type="number">
 
                                 <span class="tab-half"></span><span class="operator">-</span><span class="tab-half"></span>
-                                <input class="angka-2" type="number">
+                                <input id="kurang-2" type="number">
 
                                 <span class="tab-half"></span><span class="operator">=</span><span class="tab-half"></span>
-                                <input class="jawaban" type="number" disabled>
+                                <input id="kurang-jawaban" type="number" disabled>
 
                                 <span class="tab-half"></span>
-                                <input class="btn" type="submit" value="Submit">
+                                <input class="btn" id="kurang-btn" type="submit" value="Submit">
                                 <br>
                                 <br>
-                                <p class="text-center" id="jawaban-pengurangan">TERBILANG</p>
+                                <p class="text-center" id="kurang-txt">TERBILANG</p>
                             </form>
                         </div>
                     </div>
@@ -207,19 +211,19 @@
                             <h2 class="text-center">PENGKALIAN</h2>
                             <br>
                             <form action="">
-                                <input class="angka-1" type="number">
+                                <input id="kali-1" type="number">
                                 
                                 <span class="tab-half"></span><span class="operator">x</span><span class="tab-half"></span>
-                                <input class="angka-2" type="number">
+                                <input id="kali-2" type="number">
                                 
                                 <span class="tab-half"></span><span class="operator">=</span><span class="tab-half"></span>
-                                <input class="jawaban" type="number" disabled>
+                                <input id="kali-jawab" type="number" disabled>
                                 
                                 <span class="tab-half"></span>
-                                <input class="btn" type="submit" value="Submit">
+                                <input class="btn" id="kali-btn" type="submit" value="Submit">
                                 <br>
                                 <br>
-                                <p class="text-center">TERBILANG</p>
+                                <p class="text-center" id="kali-txt">TERBILANG</p>
                             </form>
                         </div>
                     </div>
@@ -232,19 +236,19 @@
                             <h2 class="text-center">PEMBAGIAN</h2>
                             <br>
                             <form action="">
-                                <input class="angka-1" type="number">
+                                <input id="bagi-1" type="number">
                                 
                                 <span class="tab-half"></span><span class="operator">/</span><span class="tab-half"></span>
-                                <input class="angka-2" type="number">
+                                <input id="bagi-2" type="number">
                                 
                                 <span class="tab-half"></span><span class="operator">=</span><span class="tab-half"></span>
-                                <input class="jawaban" type="number" disabled>
+                                <input id="bagi-jawaban" type="number" disabled>
                                 
                                 <span class="tab-half"></span>
-                                <input class="btn" type="submit" value="Submit">
+                                <input class="btn" id="bagi-btn" type="submit" value="Submit">
                                 <br>
                                 <br>
-                                <p class="text-center">TERBILANG</p>
+                                <p class="text-center" id="bagi-txt">TERBILANG</p>
                             </form>
                         </div>
                     </div>
@@ -266,6 +270,62 @@
                     document.getElementById("main").style.marginLeft = "80px";
                     document.getElementById("judul").style.visibility = "hidden";
                     $collapse = true;
+                }
+            }
+
+            // onclick will call function
+            document.getElementById("jumlah-btn").addEventListener("click", jumlahkan);
+            document.getElementById("kurang-btn").addEventListener("click", kurangkan);
+            document.getElementById("kali-btn").addEventListener("click", kalikan);
+            document.getElementById("bagi-btn").addEventListener("click", bagikan);
+
+            function jumlahkan(){
+                $angka1 = 0;$angka2=0;
+                $angka1 = document.getElementById("jumlah-1").valueAsNumber;
+                $angka2 = document.getElementById("jumlah-2").valueAsNumber;
+                $hasil = $angka1+$angka2;
+                if(isBulat($hasil)){
+                    document.getElementById("jumlah-jawaban").style.backgroundColor="#98C568";
+                }if(isGanjil($hasil)){
+                    document.getElementById("jumlah-jawaban").style.backgroundColor="#F5CF6A";
+                }else if(isNol($hasil)){
+                    document.getElementById("jumlah-jawaban").style.backgroundColor="#B2DAD9";
+                }
+                document.getElementById("jumlah-jawaban").value=$hasil;
+            }
+            function kurangkan(){
+                $angka1 = 0;$angka2=0;
+                $angka1 = document.getElementById("kurang-1").valueAsNumber;
+                $angka2 = document.getElementById("kurang-2").valueAsNumber;
+                $hasil = $angka1-$angka2;
+                if(isBulat($hasil)){
+                    document.getElementById("kurang-jawaban").style.backgroundColor="#98C568";
+                }if(isGanjil($hasil)){
+                    document.getElementById("kurang-jawaban").style.backgroundColor="#F5CF6A";
+                }else if(isNol($hasil)){
+                    document.getElementById("kurang-jawaban").style.backgroundColor="#B2DAD9";
+                }
+                document.getElementById("kurang-jawaban").value=$hasil;
+            }
+            function isGanjil($hasil){
+                if($hasil % 2 != 0){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+            function isBulat($hasil){
+                if($hasil % 1 == 0){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+            function isNol($hasil){
+                if($hasil == 0){
+                    return true;
+                }else{
+                    return false;
                 }
             }
         </script>
