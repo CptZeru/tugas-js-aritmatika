@@ -396,12 +396,51 @@
                     return "Kebanyakan BRO!";
                 }
                 else if($hasil >= 0){
-                    //trim() hapus spasi di ujung-ujung str
-                    $bilang = penyebutan($hasil);
+                    $temp = $hasil.toString();
+                    if($temp.search(",")){
+                        $temp = $temp.split('.');
+                        $hasildepan = parseInt($temp[0]);
+                        if($temp.length > 1){
+                            $hasilbelakang = $temp[1];
+                        }
+                        $koma = penyebutan_belakang($hasilbelakang);
+                        $depan = penyebutan($hasildepan);
+                        $bilang = $depan + " Koma " + $koma;
+                    }else{
+                        $bilang = penyebutan($hasil);
+                    }
                 }else{
-                    $bilang = "Minus " + penyebutan($hasil);
+                    $temp = $hasil.toString();
+                    if($temp.search(",")){
+                        $temp = $temp.split('.');
+                        $hasildepan = parseInt($temp[0]);
+                        if($temp.length > 1){
+                            $hasilbelakang = $temp[1];
+                        }
+                        $koma = penyebutan_belakang($hasilbelakang);
+                        $depan = penyebutan($hasildepan);
+                        $bilang = "Minus " + $depan + " Koma " + $koma;
+                    }else{
+                        $bilang = "Minus " + penyebutan($hasil);
+                    }
                 }
                 return $bilang;
+            }
+            function penyebutan_belakang(t){
+                if (t.length==0){
+                    return '';
+                }
+                return t
+                    .split('0').join('Kosong ')
+                    .split('1').join('Satu ')
+                    .split('2').join('Dua ')
+                    .split('3').join('Tiga ')
+                    .split('4').join('Empat ')
+                    .split('5').join('Lima ')
+                    .split('6').join('Enam ')
+                    .split('7').join('Tujuh ')
+                    .split('8').join('Delapan ')
+                    .split('9').join('Dembilan ');
             }
             function penyebutan($hasil){
                 // agar tidak minus saat di cek
