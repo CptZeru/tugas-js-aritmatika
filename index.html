@@ -97,6 +97,20 @@
             input{
                 width: 130px;
             }
+            input[type="number"]{
+                font-size: 24px;
+            }
+            /*hide spinner in input number*/
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+
+            /* Firefox */
+            input[type=number] {
+                -moz-appearance: textfield;
+            }
             .text-center{
                 text-align: center;
             }
@@ -138,9 +152,9 @@
                             <form action="">
                                 <input class="angka-1" type="number"> <span class="tab-half"></span>+<span class="tab-half"></span>
                                 <input class="angka-2" type="number"> <span class="tab-half"></span> = <span class="tab-half"></span>
-                                <input class="jawaban" type="number"> <span class="tab-half"></span>
+                                <input class="jawaban" type="number" disabled> <span class="tab-half"></span>
                                 <input class="btn" type="submit" value="Submit">
-                                <br><br> <p class="text-center">TERBILANG</p>
+                                <br><br> <p class="text-center" id="jawaban-penjumlahan">TERBILANG</p>
                             </form>
                         </div>
                     </div>
@@ -157,7 +171,7 @@
                                 <input class="angka-2" type="number"> <span class="tab-half"></span> = <span class="tab-half"></span>
                                 <input class="jawaban" type="number"> <span class="tab-half"></span>
                                 <input class="btn" type="submit" value="Submit">
-                                <br><br> <p class="text-center">TERBILANG</p>
+                                <br><br> <p class="text-center" id="jawaban-pengurangan">TERBILANG</p>
                             </form>
                         </div>
                     </div>
