@@ -185,7 +185,7 @@
                         <div class="inner" align="center">
                             <h2 class="text-center">PENGURANGAN</h2>
                             <br>
-                            <form action="">
+                            <form onsubmit="return false">
                                 <input id="kurang-1" type="number">
 
                                 <span class="tab-half"></span><span class="operator">-</span><span class="tab-half"></span>
@@ -210,14 +210,14 @@
                         <div class="inner" align="center">
                             <h2 class="text-center">PENGKALIAN</h2>
                             <br>
-                            <form action="">
+                            <form onsubmit="return false">
                                 <input id="kali-1" type="number">
                                 
                                 <span class="tab-half"></span><span class="operator">x</span><span class="tab-half"></span>
                                 <input id="kali-2" type="number">
                                 
                                 <span class="tab-half"></span><span class="operator">=</span><span class="tab-half"></span>
-                                <input id="kali-jawab" type="number" disabled>
+                                <input id="kali-jawaban" type="number" disabled>
                                 
                                 <span class="tab-half"></span>
                                 <input class="btn" id="kali-btn" type="submit" value="Submit">
@@ -235,7 +235,7 @@
                         <div class="inner" align="center">
                             <h2 class="text-center">PEMBAGIAN</h2>
                             <br>
-                            <form action="">
+                            <form onsubmit="return false">
                                 <input id="bagi-1" type="number">
                                 
                                 <span class="tab-half"></span><span class="operator">/</span><span class="tab-half"></span>
@@ -306,6 +306,36 @@
                     document.getElementById("kurang-jawaban").style.backgroundColor="#B2DAD9";
                 }
                 document.getElementById("kurang-jawaban").value=$hasil;
+            }
+            function kalikan(){
+                $angka1 = 0;$angka2=0;
+                $angka1 = document.getElementById("kali-1").valueAsNumber;
+                $angka2 = document.getElementById("kali-2").valueAsNumber;
+                $hasil = $angka1*$angka2;
+                if(isBulat($hasil)){
+                    document.getElementById("kali-jawaban").style.backgroundColor="#98C568";
+                }if(isGanjil($hasil)){
+                    document.getElementById("kali-jawaban").style.backgroundColor="#F5CF6A";
+                }else if(isNol($hasil)){
+                    document.getElementById("kali-jawaban").style.backgroundColor="#B2DAD9";
+                }
+                document.getElementById("kali-jawaban").value=$hasil;
+            }
+            function bagikan(){
+                $angka1 = 0;$angka2=0;$bulat = false;
+                $angka1 = document.getElementById("bagi-1").valueAsNumber;
+                $angka2 = document.getElementById("bagi-2").valueAsNumber;
+                $hasil = $angka1/$angka2;
+                if(isBulat($hasil)){
+                    document.getElementById("bagi-jawaban").style.backgroundColor="#98C568";
+                    $bulat = true;
+                }
+                if(isGanjil($hasil) && $bulat){
+                    document.getElementById("bagi-jawaban").style.backgroundColor="#F5CF6A";
+                }else if(isNol($hasil)){
+                    document.getElementById("bagi-jawaban").style.backgroundColor="#B2DAD9";
+                }
+                document.getElementById("bagi-jawaban").value=$hasil;
             }
             function isGanjil($hasil){
                 if($hasil % 2 != 0){
