@@ -161,10 +161,10 @@
                             <br>
                             <!-- return false agar tidak menjalankan onsubmit php yang menyebabkan page reload -->
                             <form onsubmit="return false">
-                                <input id="jumlah-1" type="number">
+                                <input id="jumlah-1" type="number" step="0.01">
 
                                 <span class="tab-half"></span><span class="operator">+</span><span class="tab-half"></span>
-                                <input id="jumlah-2" type="number">
+                                <input id="jumlah-2" type="number" step="0.01">
 
                                 <span class="tab-half"></span><span class="operator">=</span><span class="tab-half"></span>
                                 <input id="jumlah-jawaban" type="number" disabled>
@@ -186,10 +186,10 @@
                             <h2 class="text-center">PENGURANGAN</h2>
                             <br>
                             <form onsubmit="return false">
-                                <input id="kurang-1" type="number">
+                                <input id="kurang-1" type="number" step="0.01">
 
                                 <span class="tab-half"></span><span class="operator">-</span><span class="tab-half"></span>
-                                <input id="kurang-2" type="number">
+                                <input id="kurang-2" type="number" step="0.01">
 
                                 <span class="tab-half"></span><span class="operator">=</span><span class="tab-half"></span>
                                 <input id="kurang-jawaban" type="number" disabled>
@@ -211,10 +211,10 @@
                             <h2 class="text-center">PENGKALIAN</h2>
                             <br>
                             <form onsubmit="return false">
-                                <input id="kali-1" type="number">
+                                <input id="kali-1" type="number" step="0.01">
                                 
                                 <span class="tab-half"></span><span class="operator">x</span><span class="tab-half"></span>
-                                <input id="kali-2" type="number">
+                                <input id="kali-2" type="number" step="0.01">
                                 
                                 <span class="tab-half"></span><span class="operator">=</span><span class="tab-half"></span>
                                 <input id="kali-jawaban" type="number" disabled>
@@ -236,10 +236,10 @@
                             <h2 class="text-center">PEMBAGIAN</h2>
                             <br>
                             <form onsubmit="return false">
-                                <input id="bagi-1" type="number">
+                                <input id="bagi-1" type="number" step="0.01">
                                 
                                 <span class="tab-half"></span><span class="operator">/</span><span class="tab-half"></span>
-                                <input id="bagi-2" type="number">
+                                <input id="bagi-2" type="number" step="0.01">
                                 
                                 <span class="tab-half"></span><span class="operator">=</span><span class="tab-half"></span>
                                 <input id="bagi-jawaban" type="number" disabled>
@@ -280,45 +280,51 @@
             document.getElementById("bagi-btn").addEventListener("click", bagikan);
 
             function jumlahkan(){
-                $angka1 = 0;$angka2=0;
+                $angka1 = 0;$angka2=0;$bulat=false;
                 $angka1 = document.getElementById("jumlah-1").valueAsNumber;
                 $angka2 = document.getElementById("jumlah-2").valueAsNumber;
                 $hasil = $angka1+$angka2;
                 if(isBulat($hasil)){
                     document.getElementById("jumlah-jawaban").style.backgroundColor="#98C568";
-                }if(isGanjil($hasil)){
+                    $bulat=true;
+                }if(isGanjil($hasil) && $bulat){
                     document.getElementById("jumlah-jawaban").style.backgroundColor="#F5CF6A";
                 }else if(isNol($hasil)){
                     document.getElementById("jumlah-jawaban").style.backgroundColor="#B2DAD9";
                 }
                 document.getElementById("jumlah-jawaban").value=$hasil;
+                document.getElementById("jumlah-txt").innerHTML=iniTerbilang($hasil);
             }
             function kurangkan(){
-                $angka1 = 0;$angka2=0;
+                $angka1 = 0;$angka2=0;$bulat=false;
                 $angka1 = document.getElementById("kurang-1").valueAsNumber;
                 $angka2 = document.getElementById("kurang-2").valueAsNumber;
                 $hasil = $angka1-$angka2;
                 if(isBulat($hasil)){
                     document.getElementById("kurang-jawaban").style.backgroundColor="#98C568";
-                }if(isGanjil($hasil)){
+                    $bulat=true;
+                }if(isGanjil($hasil) && $bulat){
                     document.getElementById("kurang-jawaban").style.backgroundColor="#F5CF6A";
                 }else if(isNol($hasil)){
                     document.getElementById("kurang-jawaban").style.backgroundColor="#B2DAD9";
                 }
+                iniTerbilang($hasil);
                 document.getElementById("kurang-jawaban").value=$hasil;
             }
             function kalikan(){
-                $angka1 = 0;$angka2=0;
+                $angka1 = 0;$angka2=0;$bulat=false;
                 $angka1 = document.getElementById("kali-1").valueAsNumber;
                 $angka2 = document.getElementById("kali-2").valueAsNumber;
                 $hasil = $angka1*$angka2;
                 if(isBulat($hasil)){
                     document.getElementById("kali-jawaban").style.backgroundColor="#98C568";
-                }if(isGanjil($hasil)){
+                    $bulat=true;
+                }if(isGanjil($hasil) && $bulat){
                     document.getElementById("kali-jawaban").style.backgroundColor="#F5CF6A";
                 }else if(isNol($hasil)){
                     document.getElementById("kali-jawaban").style.backgroundColor="#B2DAD9";
                 }
+                iniTerbilang($hasil);
                 document.getElementById("kali-jawaban").value=$hasil;
             }
             function bagikan(){
@@ -335,6 +341,7 @@
                 }else if(isNol($hasil)){
                     document.getElementById("bagi-jawaban").style.backgroundColor="#B2DAD9";
                 }
+                iniTerbilang($hasil);
                 document.getElementById("bagi-jawaban").value=$hasil;
             }
             function isGanjil($hasil){
@@ -357,6 +364,38 @@
                 }else{
                     return false;
                 }
+            }
+            function iniTerbilang($hasil){
+                if($hasil > 0){
+                    //trim() hapus spasi di ujung-ujung str
+                    $bilang = penyebutan($hasil);
+                }else{
+                    $bilang = "minus " + penyebutan($hasil);
+                }
+                return $bilang;
+            }
+            function penyebutan($hasil){
+                // agar tidak minus saat di cek
+                $hasil = Math.abs($hasil);
+                $satuan = ["", "Satu", "Dua", "Tiga", "Empat", "Lima", "Enam"
+                , "Tujuh", "Delapan", "Sembilan", "Sepuluh", "Sebalas"];
+                $temp = "";
+                if($hasil < 12){
+                    $temp = " " + $satuan[$hasil];
+                }else if($hasil < 20){
+                    $temp = penyebutan($hasil - 10) + " Belas";
+                }else if($hasil < 100){
+                    $temp = penyebutan($hasil/10) + " Puluh" + penyebutan($hasil % 10);
+                }else if($hasil < 200){
+                    $temp = " Seratus" + penyebutan($hasil - 100);
+                }else if($hasil < 1000){
+                    $temp = penyebutan($hasil/100) + " Ratus" + penyebutan($hasil % 100);
+                }else if($hasil < 2000){
+                    $temp = " Seribu" + penyebutan($hasil - 1000);
+                }else if($hasil < 1000000){
+                    $temp = penyebutan($hasil/1000) + " Ribu" + penyebutan($hasil%1000);
+                }
+                return $temp;
             }
         </script>
     </body>
