@@ -160,11 +160,11 @@
                             <h2 class="text-center">PENJUMLAHAN</h2>
                             <br>
                             <!-- return false agar tidak menjalankan onsubmit php yang menyebabkan page reload -->
-                            <form onsubmit="return false">
-                                <input id="jumlah-1" type="number" step="0.01">
+                            <form onsubmit="jumlahkan(); return false" >
+                                <input id="jumlah-1" type="number" step="0.01" required>
 
                                 <span class="tab-half"></span><span class="operator">+</span><span class="tab-half"></span>
-                                <input id="jumlah-2" type="number" step="0.01">
+                                <input id="jumlah-2" type="number" step="0.01" required>
 
                                 <span class="tab-half"></span><span class="operator">=</span><span class="tab-half"></span>
                                 <input id="jumlah-jawaban" type="number" disabled>
@@ -185,11 +185,11 @@
                         <div class="inner" align="center">
                             <h2 class="text-center">PENGURANGAN</h2>
                             <br>
-                            <form onsubmit="return false">
-                                <input id="kurang-1" type="number" step="0.01">
+                            <form onsubmit="kurangkan(); return false">
+                                <input id="kurang-1" type="number" step="0.01" required>
 
                                 <span class="tab-half"></span><span class="operator">-</span><span class="tab-half"></span>
-                                <input id="kurang-2" type="number" step="0.01">
+                                <input id="kurang-2" type="number" step="0.01" required>
 
                                 <span class="tab-half"></span><span class="operator">=</span><span class="tab-half"></span>
                                 <input id="kurang-jawaban" type="number" disabled>
@@ -210,11 +210,11 @@
                         <div class="inner" align="center">
                             <h2 class="text-center">PENGKALIAN</h2>
                             <br>
-                            <form onsubmit="return false">
-                                <input id="kali-1" type="number" step="0.01">
+                            <form onsubmit="kalikan(); return false">
+                                <input id="kali-1" type="number" step="0.01" required>
                                 
                                 <span class="tab-half"></span><span class="operator">x</span><span class="tab-half"></span>
-                                <input id="kali-2" type="number" step="0.01">
+                                <input id="kali-2" type="number" step="0.01" required>
                                 
                                 <span class="tab-half"></span><span class="operator">=</span><span class="tab-half"></span>
                                 <input id="kali-jawaban" type="number" disabled>
@@ -235,11 +235,11 @@
                         <div class="inner" align="center">
                             <h2 class="text-center">PEMBAGIAN</h2>
                             <br>
-                            <form onsubmit="return false">
-                                <input id="bagi-1" type="number" step="0.01">
+                            <form onsubmit="bagikan(); return false">
+                                <input id="bagi-1" type="number" step="0.01" required>
                                 
                                 <span class="tab-half"></span><span class="operator">/</span><span class="tab-half"></span>
-                                <input id="bagi-2" type="number" step="0.01">
+                                <input id="bagi-2" type="number" step="0.01" required>
                                 
                                 <span class="tab-half"></span><span class="operator">=</span><span class="tab-half"></span>
                                 <input id="bagi-jawaban" type="number" disabled>
@@ -274,10 +274,10 @@
             }
 
             // onclick will call function
-            document.getElementById("jumlah-btn").addEventListener("click", jumlahkan);
-            document.getElementById("kurang-btn").addEventListener("click", kurangkan);
-            document.getElementById("kali-btn").addEventListener("click", kalikan);
-            document.getElementById("bagi-btn").addEventListener("click", bagikan);
+            // document.getElementById("jumlah-btn").addEventListener("click", jumlahkan);
+            // document.getElementById("kurang-btn").addEventListener("click", kurangkan);
+            // document.getElementById("kali-btn").addEventListener("click", kalikan);
+            // document.getElementById("bagi-btn").addEventListener("click", bagikan);
 
             function jumlahkan(){
                 $angka1 = 0;$angka2=0;$bulat=false;
@@ -291,6 +291,8 @@
                     document.getElementById("jumlah-jawaban").style.backgroundColor="#F5CF6A";
                 }else if(isNol($hasil)){
                     document.getElementById("jumlah-jawaban").style.backgroundColor="#B2DAD9";
+                }else{
+                    document.getElementById("jumlah-jawaban").style.backgroundColor="#FFFFFF";
                 }
                 document.getElementById("jumlah-jawaban").value=$hasil;
                 document.getElementById("jumlah-txt").innerHTML=iniTerbilang($hasil);
@@ -307,6 +309,8 @@
                     document.getElementById("kurang-jawaban").style.backgroundColor="#F5CF6A";
                 }else if(isNol($hasil)){
                     document.getElementById("kurang-jawaban").style.backgroundColor="#B2DAD9";
+                }else{
+                    document.getElementById("kurang-jawaban").style.backgroundColor="#FFFFFF";
                 }
                 document.getElementById("kurang-jawaban").value=$hasil;
                 document.getElementById("kurang-txt").innerHTML=iniTerbilang($hasil);
@@ -323,6 +327,8 @@
                     document.getElementById("kali-jawaban").style.backgroundColor="#F5CF6A";
                 }else if(isNol($hasil)){
                     document.getElementById("kali-jawaban").style.backgroundColor="#B2DAD9";
+                }else{
+                    document.getElementById("kali-jawaban").style.backgroundColor="#FFFFFF";
                 }
                 document.getElementById("kali-jawaban").value=$hasil;
                 document.getElementById("kali-txt").innerHTML=iniTerbilang($hasil);
@@ -340,6 +346,8 @@
                     document.getElementById("bagi-jawaban").style.backgroundColor="#F5CF6A";
                 }else if(isNol($hasil)){
                     document.getElementById("bagi-jawaban").style.backgroundColor="#B2DAD9";
+                }else{
+                    document.getElementById("bagi-jawaban").style.backgroundColor="#FFFFFF";
                 }
                 document.getElementById("bagi-jawaban").value=$hasil;
                 document.getElementById("bagi-txt").innerHTML=iniTerbilang($hasil);
@@ -359,7 +367,7 @@
                 if( minus ) {    
                     nilai = (nilai * -1).toFixed(2);
                 }
-                return n;
+                return nilai;
             }
             function isGanjil($hasil){
                 if($hasil % 2 != 0){
@@ -386,7 +394,7 @@
                 if($hasil > 1000000){
                     return "Kebanyakan BRO!";
                 }
-                else if($hasil > 0){
+                else if($hasil >= 0){
                     //trim() hapus spasi di ujung-ujung str
                     $bilang = penyebutan($hasil);
                 }else{
@@ -398,7 +406,7 @@
                 // agar tidak minus saat di cek
                 $hasil = Math.abs($hasil);
                 $hasil = parseInt($hasil);
-                $satuan = ["", "Satu", "Dua", "Tiga", "Empat", "Lima", "Enam"
+                $satuan = ["Nol", "Satu", "Dua", "Tiga", "Empat", "Lima", "Enam"
                 , "Tujuh", "Delapan", "Sembilan", "Sepuluh", "Sebalas"];
                 $temp = "";
                 if($hasil < 12){
