@@ -310,10 +310,10 @@
                     document.getElementById("kurang-jawaban").style.backgroundColor="#F5CF6A";
                 }else if(isNol($hasil)){
                     document.getElementById("kurang-jawaban").style.backgroundColor="#B2DAD9";
-                }else{
+                }else if(!$bulat){
                     document.getElementById("kurang-jawaban").style.backgroundColor="#FFFFFF";
+                    $hasil = pembulatan($hasil,2);
                 }
-                pembulatan($hasil,2);
                 document.getElementById("kurang-jawaban").value=$hasil;
                 document.getElementById("kurang-txt").innerHTML=iniTerbilang($hasil);
             }
@@ -329,10 +329,10 @@
                     document.getElementById("kali-jawaban").style.backgroundColor="#F5CF6A";
                 }else if(isNol($hasil)){
                     document.getElementById("kali-jawaban").style.backgroundColor="#B2DAD9";
-                }else{
+                }else if(!$bulat){
                     document.getElementById("kali-jawaban").style.backgroundColor="#FFFFFF";
+                    $hasil = pembulatan($hasil,2);
                 }
-                pembulatan($hasil,2);
                 document.getElementById("kali-jawaban").value=$hasil;
                 document.getElementById("kali-txt").innerHTML=iniTerbilang($hasil);
             }
@@ -349,29 +349,26 @@
                     document.getElementById("bagi-jawaban").style.backgroundColor="#F5CF6A";
                 }else if(isNol($hasil)){
                     document.getElementById("bagi-jawaban").style.backgroundColor="#B2DAD9";
-                }else{
+                }else if(!$bulat){
                     document.getElementById("bagi-jawaban").style.backgroundColor="#FFFFFF";
+                    $hasil = pembulatan($hasil,2);
                 }
-                pembulatan($hasil,2);
                 document.getElementById("bagi-jawaban").value=$hasil;
                 document.getElementById("bagi-txt").innerHTML=iniTerbilang($hasil);
             }
-            function pembulatan(nilai, digits) {
+            function pembulatan($nilai, $digits) {
                 $minus = false;
-                if (digits === undefined) {
-                    digits = 0;
+                if( $nilai < 0) {
+                    $minus = true;
+                    $nilai = $nilai * -1;
                 }
-                    if( n < 0) {
-                    minus = true;
-                    nilai = nilai * -1;
+                $pengkali = Math.pow(10, $digits);
+                $nilai = parseFloat(($nilai * [$pengkali]).toFixed(11));
+                $nilai = (Math.round($nilai) / $pengkali).toFixed(2);
+                if( $minus ) {    
+                    $nilai = ($nilai * -1).toFixed(2);
                 }
-                var pengkali = Math.pow(10, digits);
-                nilai = parseFloat((nilai * [pengkali]).toFixed(11));
-                nilai = (Math.round(nilai) / pengkali).toFixed(2);
-                if( minus ) {    
-                    nilai = (nilai * -1).toFixed(2);
-                }
-                return nilai;
+                return $nilai;
             }
             function isGanjil($hasil){
                 if($hasil % 2 != 0){
