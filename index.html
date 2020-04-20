@@ -434,7 +434,11 @@
                         }
                         $koma = penyebutan_belakang($hasilbelakang);
                         $depan = penyebutan($hasildepan);
-                        $bilang = "Minus "+ $depan + " Koma " + $koma;
+                        if($depan=" "){
+                            $bilang = "Minus Nol Koma "+$koma;
+                        }else{
+                            $bilang = "Minus "+ $depan + " Koma " + $koma;
+                        }
                     }else{
                         $bilang = "Minus " + penyebutan($hasil);
                     }
