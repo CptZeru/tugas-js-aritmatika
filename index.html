@@ -24,19 +24,6 @@
             .content #penjumlahan{
                 position: relative;
             }
-            .center {
-                margin: 0;
-                position: absolute;
-                top: 50%;
-                left: 40%;
-                -ms-transform: translate(-50%, -50%);
-                transform: translate(-50%,-50%);
-                /* display: flex; */
-                /* flex-wrap: wrap; */
-                /* justify-content: center; */
-                /* align-items: center; */
-                /* height: 100vh; */
-            }
             .sidenav {
                 height: 100%;
                 width: 80px;
@@ -72,7 +59,6 @@
             }
             .btn{
                 width: 90px;
-                /* height: 35px; */
                 font-size: 24px;
             }
             .tab-1{
@@ -87,14 +73,10 @@
                 display: inline-block;
                 width: 60px;
             }
-            .terbilang{
-                text-align: center;
-            }
             #main{
                 padding: 0;
                 transition: margin-left .5s;
                 margin-left: 80px;
-                /* padding: 1px 16px; */
             }
             input{
                 width: 130px;
@@ -126,7 +108,6 @@
             }
             .outer {
                 display: table;
-                /* position: absolute; */
                 top: 0;
                 left: 0;
                 height: 100%;
@@ -271,12 +252,6 @@
                 }
             }
 
-            // onclick will call function
-            // document.getElementById("jumlah-btn").addEventListener("click", jumlahkan);
-            // document.getElementById("kurang-btn").addEventListener("click", kurangkan);
-            // document.getElementById("kali-btn").addEventListener("click", kalikan);
-            // document.getElementById("bagi-btn").addEventListener("click", bagikan);
-
             function jumlahkan(){
                 $angka1 = 0;$angka2=0;$bulat=false;
                 $angka1 = document.getElementById("jumlah-1").valueAsNumber;
@@ -292,7 +267,6 @@
                 }else if(!$bulat){
                     document.getElementById("jumlah-jawaban").style.backgroundColor="#FFFFFF";
                 }
-                // pembulatan($hasil,2);
                 document.getElementById("jumlah-jawaban").value=$hasil;
                 document.getElementById("jumlah-txt").innerHTML=iniTerbilang($hasil);
             }
