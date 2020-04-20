@@ -383,9 +383,8 @@
                 }
                 else if($hasil >= 0){
                     $temp = $hasil.toString();
-                    console.log($temp.search("."));
-                    if($temp.search(".")){
-                        $temp = $temp.split('.');
+                    if($temp.indexOf(".")!=-1){
+                        $temp = $temp.split(".");
                         $hasildepan = parseInt($temp[0]);
                         if($temp.length > 1){
                             $hasilbelakang = $temp[1];
@@ -398,8 +397,8 @@
                     }
                 }else{
                     $temp = $hasil.toString();
-                    if($temp.search(".")){
-                        $temp = $temp.split('.');
+                    if($temp.indexOf(".")!=-1){
+                        $temp = $temp.split(".");
                         $hasildepan = parseInt($temp[0]);
                         if($temp.length > 1){
                             $hasilbelakang = $temp[1];
@@ -427,7 +426,7 @@
                     .split('6').join('Enam ')
                     .split('7').join('Tujuh ')
                     .split('8').join('Delapan ')
-                    .split('9').join('Dembilan ');
+                    .split('9').join('Sembilan ');
             }
             function penyebutan($hasil){
                 // agar tidak minus saat di cek
