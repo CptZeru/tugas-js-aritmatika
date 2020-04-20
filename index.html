@@ -352,6 +352,9 @@
                 document.getElementById("bagi-jawaban").value=$hasil;
                 document.getElementById("bagi-txt").innerHTML=iniTerbilang($hasil);
             }
+            //hanya digunakan pada function bagikan, karena beberapa pembagian mengahasilkan .0000341
+            //sehingga pada pembulatan hasil .00, dan fungsi komaNolnol menghilangkan .00
+            //tetapi masih ada yang harus di fix
             function komaNolnol($hasil){
                 $temp = $hasil.toString();
                 if($temp.indexOf(".00")!=-1){
