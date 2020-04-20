@@ -383,7 +383,8 @@
                 }
                 else if($hasil >= 0){
                     $temp = $hasil.toString();
-                    if($temp.search(".")==0){
+                    console.log($temp.search("."));
+                    if($temp.search(".")){
                         $temp = $temp.split('.');
                         $hasildepan = parseInt($temp[0]);
                         if($temp.length > 1){
@@ -397,7 +398,7 @@
                     }
                 }else{
                     $temp = $hasil.toString();
-                    if($temp.search(",")){
+                    if($temp.search(".")){
                         $temp = $temp.split('.');
                         $hasildepan = parseInt($temp[0]);
                         if($temp.length > 1){
