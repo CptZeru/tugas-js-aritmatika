@@ -24,6 +24,14 @@
             .content #penjumlahan{
                 position: relative;
             }
+            .center {
+                margin: 0;
+                position: absolute;
+                top: 50%;
+                left: 40%;
+                -ms-transform: translate(-50%, -50%);
+                transform: translate(-50%,-50%);
+            }
             .sidenav {
                 height: 100%;
                 width: 80px;
@@ -72,6 +80,9 @@
             .tab-2{
                 display: inline-block;
                 width: 60px;
+            }
+            .terbilang{
+                text-align: center;
             }
             #main{
                 padding: 0;
@@ -141,7 +152,7 @@
                             <h2 class="text-center">PENJUMLAHAN</h2>
                             <br>
                             <!-- return false agar tidak menjalankan onsubmit php yang menyebabkan page reload -->
-                            <form onsubmit="jumlahkan(); return false" >
+                            <form onsubmit="jumlahkan(); return false;">
                                 <input id="jumlah-1" type="number" step="0.01" required>
 
                                 <span class="tab-half"></span><span class="operator">+</span><span class="tab-half"></span>
@@ -166,7 +177,7 @@
                         <div class="inner" align="center">
                             <h2 class="text-center">PENGURANGAN</h2>
                             <br>
-                            <form onsubmit="kurangkan(); return false">
+                            <form onsubmit="kurangkan(); return false;">
                                 <input id="kurang-1" type="number" step="0.01" required>
 
                                 <span class="tab-half"></span><span class="operator">-</span><span class="tab-half"></span>
@@ -191,7 +202,7 @@
                         <div class="inner" align="center">
                             <h2 class="text-center">PENGKALIAN</h2>
                             <br>
-                            <form onsubmit="kalikan(); return false">
+                            <form onsubmit="kalikan(); return false;">
                                 <input id="kali-1" type="number" step="0.01" required>
                                 
                                 <span class="tab-half"></span><span class="operator">x</span><span class="tab-half"></span>
@@ -216,7 +227,7 @@
                         <div class="inner" align="center">
                             <h2 class="text-center">PEMBAGIAN</h2>
                             <br>
-                            <form onsubmit="bagikan(); return false">
+                            <form onsubmit="bagikan(); return false;">
                                 <input id="bagi-1" type="number" step="0.01" required>
                                 
                                 <span class="tab-half"></span><span class="operator">/</span><span class="tab-half"></span>
@@ -240,11 +251,13 @@
             $collapse = true;
             function hitSidenav(){
                 if($collapse){
+                    console.log("opening sidenav");
                     document.getElementById("inisidenav").style.width = "250px";
                     document.getElementById("main").style.marginLeft = "250px";
                     document.getElementById("judul").style.visibility = "visible";
                     $collapse = false;
                 }else{
+                    console.log("closing sidenav");
                     document.getElementById("inisidenav").style.width = "80px";
                     document.getElementById("main").style.marginLeft = "80px";
                     document.getElementById("judul").style.visibility = "hidden";
@@ -266,6 +279,7 @@
                     document.getElementById("jumlah-jawaban").style.backgroundColor="#B2DAD9";
                 }else if(!$bulat){
                     document.getElementById("jumlah-jawaban").style.backgroundColor="#FFFFFF";
+                    $hasil = pembulatan($hasil,2);
                 }
                 document.getElementById("jumlah-jawaban").value=$hasil;
                 document.getElementById("jumlah-txt").innerHTML=iniTerbilang($hasil);
@@ -369,7 +383,7 @@
                 }
                 else if($hasil >= 0){
                     $temp = $hasil.toString();
-                    if($temp.search(",")){
+                    if($temp.search(".")==0){
                         $temp = $temp.split('.');
                         $hasildepan = parseInt($temp[0]);
                         if($temp.length > 1){
@@ -391,7 +405,7 @@
                         }
                         $koma = penyebutan_belakang($hasilbelakang);
                         $depan = penyebutan($hasildepan);
-                        $bilang = "Minus " + $depan + " Koma " + $koma;
+                        $bilang = "Minus "+ $depan + " Koma " + $koma;
                     }else{
                         $bilang = "Minus " + penyebutan($hasil);
                     }
