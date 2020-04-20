@@ -62,7 +62,7 @@
                 display: block;
                 opacity: 0.5;
             }
-            .sidenav a:hover{
+            .sidenav .active,.sidenav a:hover{
                 opacity: 1;
             }
             .btn{
@@ -138,10 +138,10 @@
     <body>
         <div class="sidenav" id="inisidenav" onmouseover="hitSidenav()" onmouseout="hitSidenav()">
             <p id="judul">Operasi Aritmatika <br> dan Hasil Terbilang</p>
-            <a class="fa fa-plus" href="#penjumlahan"><span class="tab-1"></span>Penjumlahan</a>
-            <a class="fa fa-minus" href="#pengurangan"><span class="tab-1"></span>Pengurangan</a>
-            <a class="fa fa-times" href="#pengkalian"><span class="tab-1"></span> Pengkalian</a>
-            <a class="fa fa-divide" href="#pembagian"><span class="tab-1"></span>Pembagian</a>
+            <a class="fa fa-plus menu active" href="#penjumlahan"><span class="tab-1"></span>Penjumlahan</a>
+            <a class="fa fa-minus menu" href="#pengurangan"><span class="tab-1"></span>Pengurangan</a>
+            <a class="fa fa-times menu" href="#pengkalian"><span class="tab-1"></span> Pengkalian</a>
+            <a class="fa fa-divide menu" href="#pembagian"><span class="tab-1"></span>Pembagian</a>
         </div>
 
         <div class="content" id="main">
@@ -264,6 +264,15 @@
                     $collapse = true;
                 }
             }
+            $header = document.getElementById("inisidenav");
+            $menu = $header.getElementsByClassName("menu");
+            for($i=0; $i< $menu.length; $i++){
+                $menu[$i].addEventListener("click", function(){
+                    $current = document.getElementsByClassName("active");
+                    $current[0].className = $current[0].className.replace("active","");
+                    this.className +=" active";
+                })
+            }
 
             function jumlahkan(){
                 $angka1 = 0;$angka2=0;$bulat=false;
@@ -338,9 +347,20 @@
                 }else if(!$bulat){
                     document.getElementById("bagi-jawaban").style.backgroundColor="#FFFFFF";
                     $hasil = pembulatan($hasil,2);
+                    $hasil = komaNolnol($hasil);
                 }
                 document.getElementById("bagi-jawaban").value=$hasil;
                 document.getElementById("bagi-txt").innerHTML=iniTerbilang($hasil);
+            }
+            function komaNolnol($hasil){
+                $temp = $hasil.toString();
+                if($temp.indexOf(".00")!=-1){
+                    $temp = $temp.slice(0,$temp.indexOf(".00"));
+                    $temp = parseInt($temp);  
+                    return $temp;
+                }else{
+                    return $hasil
+                }
             }
             function pembulatan($nilai, $digits) {
                 $minus = false;
