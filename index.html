@@ -403,8 +403,9 @@
             function iniTerbilang($hasil){
                 if($hasil > 1000000){
                     return "Kebanyakan BRO!";
-                }
-                else if($hasil >= 0){
+                }else if($hasil == 0){
+                    return "Nol";
+                }else if($hasil > 0){
                     $temp = $hasil.toString();
                     if($temp.indexOf(".")!=-1){
                         $temp = $temp.split(".");
@@ -455,7 +456,7 @@
                 // agar tidak minus saat di cek
                 $hasil = Math.abs($hasil);
                 $hasil = parseInt($hasil);
-                $satuan = ["Nol", "Satu", "Dua", "Tiga", "Empat", "Lima", "Enam"
+                $satuan = ["", "Satu", "Dua", "Tiga", "Empat", "Lima", "Enam"
                 , "Tujuh", "Delapan", "Sembilan", "Sepuluh", "Sebalas"];
                 $temp = "";
                 if($hasil < 12){
