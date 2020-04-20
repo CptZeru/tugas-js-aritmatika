@@ -137,6 +137,7 @@
         <title>Operasi Aritmatika by Alugoro Gandhi</title>
     </head>
     <body>
+        <!-- bagian side bar yang dapat di hover -->
         <div class="sidenav" id="inisidenav" onmouseover="hitSidenav()" onmouseout="hitSidenav()">
             <p id="judul">Operasi Aritmatika <br> dan Hasil Terbilang</p>
             <a class="fa fa-plus menu active" href="#penjumlahan"><span class="tab-1"></span>Penjumlahan</a>
@@ -144,7 +145,7 @@
             <a class="fa fa-times menu" href="#pengkalian"><span class="tab-1"></span> Pengkalian</a>
             <a class="fa fa-divide menu" href="#pembagian"><span class="tab-1"></span>Pembagian</a>
         </div>
-
+        <!-- bagian isi kalkulator operasi -->
         <div class="content" id="main">
             <section id="penjumlahan">
                 <div class="outer">
@@ -249,6 +250,7 @@
             </section>
         </div>
         <script>
+            // function membuat sidebar collapse dan tidak saat cursor hover ke arah sidebar
             $collapse = true;
             function hitSidenav(){
                 if($collapse){
@@ -265,6 +267,7 @@
                     $collapse = true;
                 }
             }
+            //fungsi menampilkan menu yang aktif dengan menambah kelas active pada tag a menu
             $header = document.getElementById("inisidenav");
             $menu = $header.getElementsByClassName("menu");
             for($i=0; $i< $menu.length; $i++){
@@ -274,12 +277,15 @@
                     this.className +=" active";
                 })
             }
-
+            //function penjumlahan
             function jumlahkan(){
+                //deklarasi variable
                 $angka1 = 0;$angka2=0;$bulat=false;
+                //get value as number not string
                 $angka1 = document.getElementById("jumlah-1").valueAsNumber;
                 $angka2 = document.getElementById("jumlah-2").valueAsNumber;
                 $hasil = $angka1+$angka2;
+                //ganti background color apabila memenuhi syarat if
                 if(isBulat($hasil)){
                     document.getElementById("jumlah-jawaban").style.backgroundColor="#98C568";
                     $bulat=true;
@@ -291,14 +297,19 @@
                     document.getElementById("jumlah-jawaban").style.backgroundColor="#FFFFFF";
                     $hasil = pembulatan($hasil,2);
                 }
+                //menampilkan hasil jawaban angka dan terbilang
                 document.getElementById("jumlah-jawaban").value=$hasil;
                 document.getElementById("jumlah-txt").innerHTML=iniTerbilang($hasil);
             }
+            //function pengurangan
             function kurangkan(){
+                //deklarasi variable
                 $angka1 = 0;$angka2=0;$bulat=false;
+                //get value as number not string
                 $angka1 = document.getElementById("kurang-1").valueAsNumber;
                 $angka2 = document.getElementById("kurang-2").valueAsNumber;
                 $hasil = $angka1-$angka2;
+                //ganti background color apabila memenuhi syarat if
                 if(isBulat($hasil)){
                     document.getElementById("kurang-jawaban").style.backgroundColor="#98C568";
                     $bulat=true;
@@ -310,6 +321,7 @@
                     document.getElementById("kurang-jawaban").style.backgroundColor="#FFFFFF";
                     $hasil = pembulatan($hasil,2);
                 }
+                //menampilkan hasil jawaban angka dan terbilang
                 document.getElementById("kurang-jawaban").value=$hasil;
                 document.getElementById("kurang-txt").innerHTML=iniTerbilang($hasil);
             }
@@ -328,6 +340,7 @@
                 }else if(!$bulat){
                     document.getElementById("kali-jawaban").style.backgroundColor="#FFFFFF";
                     $hasil = pembulatan($hasil,2);
+                    $hasil = komaNolnol($hasil);
                 }
                 document.getElementById("kali-jawaban").value=$hasil;
                 document.getElementById("kali-txt").innerHTML=iniTerbilang($hasil);
@@ -417,7 +430,7 @@
                         $koma = penyebutan_belakang($hasilbelakang);
                         $depan = penyebutan($hasildepan);
                         console.log($depan);
-                        if($depan=" "){
+                        if($depan==" "){
                             $bilang = "Nol Koma " + $koma;
                         }else{
                             $bilang = $depan + " Koma " + $koma;
@@ -435,7 +448,7 @@
                         }
                         $koma = penyebutan_belakang($hasilbelakang);
                         $depan = penyebutan($hasildepan);
-                        if($depan=" "){
+                        if($depan==" "){
                             $bilang = "Minus Nol Koma "+$koma;
                         }else{
                             $bilang = "Minus "+ $depan + " Koma " + $koma;
